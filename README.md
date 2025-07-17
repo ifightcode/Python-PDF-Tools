@@ -1,14 +1,13 @@
 # PDF Tools
 
-A Python utility for extracting images from PDF files and rotating images in directories.
+A comprehensive Python utility for PDF processing, image manipulation, and **extreme PDF compression** (99%+ file size reduction).
 
 ## Features
 
 - **PDF Image Extraction**: Extract all images from PDF files with quality filtering
 - **Image Rotation**: Rotate images clockwise or anticlockwise by 90 degrees
 - **PDF Creation**: Create PDFs from images following page numbering convention
-- **PDF Compression**: Basic PDF compression with multiple compression levels
-- **Advanced PDF Compression**: Render pages as compressed images for 99%+ file size reduction
+- **PDF Compression**: Extreme compression with 99%+ file size reduction using page rendering
 - **Interactive Help System**: Comprehensive built-in documentation and examples
 - **Batch Processing**: Process all images in a directory at once
 - **Multiple Formats**: Supports PNG, JPG, JPEG, GIF, BMP, TIFF, WEBP
@@ -33,7 +32,7 @@ uv sync
 
 ### Command Line Interface
 
-The tool supports six main commands: `extract`, `rotate`, `create_pdf`, `compress`, `compress_adv`, and `help`.
+The tool supports five main commands: `extract`, `rotate`, `create_pdf`, `compress`, and `help`.
 
 #### Extract Images from PDF
 
@@ -123,54 +122,17 @@ uv run main.py create_pdf deed_images -o final_deed.pdf
 
 #### Compress PDF
 
-Compress a PDF file to reduce its size:
-
-```bash
-# Compress with default (medium) compression
-uv run main.py compress path/to/your/file.pdf
-
-# Compress with specific compression level
-uv run main.py compress path/to/your/file.pdf --compression high
-
-# Compress with custom output name
-uv run main.py compress path/to/your/file.pdf --output compressed_file.pdf
-```
-
-**Compression Levels:**
-- `low` - Basic compression with minimal processing
-- `medium` - Balanced compression (default)
-- `high` - Maximum compression with all optimizations
-
-**Options:**
-- `--compression` or `-c` - Specify compression level
-- `--output` or `-o` - Specify custom output PDF filename
-
-**Examples:**
-```bash
-# Compress with medium compression (creates original_compressed.pdf)
-uv run main.py compress large_document.pdf
-
-# High compression with custom name
-uv run main.py compress large_document.pdf --compression high --output small_document.pdf
-uv run main.py compress large_document.pdf -c high -o optimized.pdf
-
-# Low compression (faster processing)
-uv run main.py compress document.pdf --compression low
-```
-
-#### Advanced PDF Compression
-
 **🚀 EXTREME COMPRESSION** - Achieve 99%+ file size reduction! This method renders each PDF page as a compressed image for maximum size reduction:
 
 ```bash
-# Advanced compression with default settings (99%+ reduction typical)
-uv run main.py compress_adv path/to/your/file.pdf
+# Compression with default settings (99%+ reduction typical)
+uv run main.py compress path/to/your/file.pdf
 
 # Custom quality and resolution settings
-uv run main.py compress_adv path/to/your/file.pdf --quality 20 --max-width 1000
+uv run main.py compress path/to/your/file.pdf --quality 20 --max-width 1000
 
 # Ultra compression for maximum size reduction
-uv run main.py compress_adv path/to/your/file.pdf --quality 10 --max-width 800 --output tiny_file.pdf
+uv run main.py compress path/to/your/file.pdf --quality 10 --max-width 800 --output tiny_file.pdf
 ```
 
 **Options:**
@@ -182,25 +144,24 @@ uv run main.py compress_adv path/to/your/file.pdf --quality 10 --max-width 800 -
 **Real-World Results:**
 ```
 📊 Compression Test Results:
-Original PDF:     162.81 MB
-Basic compress:    67.33 MB  (58% reduction)
-Advanced compress:  0.59 MB  (99.6% reduction - 275x smaller!)
-Ultra compress:     0.26 MB  (99.8% reduction - 626x smaller!)
+Original PDF:      162.81 MB
+Compressed PDF:      0.59 MB  (99.6% reduction - 275x smaller!)
+Ultra compressed:    0.26 MB  (99.8% reduction - 626x smaller!)
 ```
 
 **Examples:**
 ```bash
-# Default advanced compression (creates original_advanced_compressed.pdf)
-uv run main.py compress_adv large_document.pdf
+# Default compression (creates original_advanced_compressed.pdf)
+uv run main.py compress large_document.pdf
 
 # Balanced compression (good quality, excellent size reduction)
-uv run main.py compress_adv large_document.pdf --quality 30 --max-width 1200
+uv run main.py compress large_document.pdf --quality 30 --max-width 1200
 
 # High compression (very good size reduction, acceptable quality)
-uv run main.py compress_adv large_document.pdf --quality 20 --max-width 1000
+uv run main.py compress large_document.pdf --quality 20 --max-width 1000
 
 # Ultra compression (maximum size reduction, basic quality)
-uv run main.py compress_adv large_document.pdf -q 10 --max-width 800 -o ultra_tiny.pdf
+uv run main.py compress large_document.pdf -q 10 --max-width 800 -o ultra_tiny.pdf
 ```
 
 **Perfect For:**
@@ -257,7 +218,7 @@ This shows all available commands, options, examples, and usage tips.
 
 4. **Compress the final PDF (optional):**
    ```bash
-   uv run main.py compress rotated_document.pdf --compression high --output final_compressed.pdf
+   uv run main.py compress rotated_document.pdf --quality 20 --output final_compressed.pdf
    ```
 
 ### Batch Processing
